@@ -9,6 +9,8 @@ public final class RobotConstants {
     public static final int intake_motor_id = 4;
 
     //Controller Mapping
+    public static final int PILOT_USB_PORT = 0;
+    public static final int COPILOT_USB_PORT = 1;
     public static final int A_BUTTON = 0;
     public static final int B_BUTTON = 1;
     public static final int X_BUTTON = 2;
@@ -16,5 +18,8 @@ public final class RobotConstants {
     public static final int LEFT_BUMPER = 4;
     public static final int RIGHT_BUMPER = 5;
 
-    
+    //Need to check if these values match
+    public static final int LEFT_STICK = 5;
+    public static final int RIGHT_STICK = 6;
+
 }
