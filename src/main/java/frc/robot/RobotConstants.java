@@ -1,12 +1,12 @@
 package frc.robot;
 
 public final class RobotConstants {
-    //PWM Ports
+    //PWM/CAN Ports
     public static final int FRONT_LEFT_DRIVE_MOTOR_ID = 0;
     public static final int BACK_LEFT_DRIVE_MOTOR_ID = 1;
     public static final int FRONT_RIGHT_DRIVE_MOTOR_ID = 2;
     public static final int BACK_RIGHT_DRIVE_MOTOR_ID = 3;
-    public static final int intake_motor_id = 4;
+    public static final int INTAKE_MOTOR_ID = 4;
 
     //Controller Mapping
     public static final int PILOT_USB_PORT = 0;
