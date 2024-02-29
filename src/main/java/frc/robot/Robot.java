@@ -13,6 +13,8 @@ import edu.wpi.first.wpilibj.TimedRobot;
 public class Robot extends TimedRobot {
   private OperatorInterface _Ops;
   private DriveSystem _DriveSyst;
+  private ShooterSystem _ShootSyst;
+  private IntakeSystem _IntakeSyst;
   //private Joystick pilot_joy = new Joystick(RobotConstants.PILOT_USB_PORT);
   //private WPI_TalonSRX talon_motor = new WPI_TalonSRX(2); // dev # set thru "Phoenix Tuner X"
 
@@ -21,6 +23,8 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     this._Ops = new OperatorInterface();
     this._DriveSyst = new DriveSystem();
+    this._ShootSyst = new ShooterSystem();
+    this._IntakeSyst = new IntakeSystem();
   }
   
   // Need to know if this will work
@@ -43,6 +47,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     _DriveSyst.update(_Ops.LeftDriveStick(), _Ops.RightDriveStick());
+    _IntakeSyst.update(_Ops.A_Button());
     //talon_motor.set(ControlMode.PercentOutput, this.pilot_joy.getRawAxis(RobotConstants.RIGHT_STICK));
     
     // https://github.com/whackamadoodle3000/HowToProgramming
