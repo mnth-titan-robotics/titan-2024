@@ -15,8 +15,8 @@ public class DriveSystem {
     private Encoder RightDriveEncoder;*/
 
     public void update(double LeftDrive, double RightDrive){
-        this.FrontLeftMotor.set(ControlMode.PercentOutput, LeftDrive);
-        this.BackLeftMotor.set(ControlMode.PercentOutput, LeftDrive);
+        this.FrontLeftMotor.set(ControlMode.PercentOutput, -LeftDrive);
+        this.BackLeftMotor.set(ControlMode.PercentOutput, -LeftDrive);
         this.FrontRightMotor.set(ControlMode.PercentOutput, RightDrive);
         this.BackRightMotor.set(ControlMode.PercentOutput, RightDrive);
     }

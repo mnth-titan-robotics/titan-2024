@@ -7,7 +7,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 
 public class ShooterSystem {
     private WPI_TalonSRX upperShooterMotor = new WPI_TalonSRX(RobotConstants.UPPER_SHOOTER_MOTOR_ID);
-    //private WPI_VictorSPX lowerShooterMotor = new WPI_VictorSPX(RobotConstants.LOWER_SHOOTER_MOTOR_ID);
+    private WPI_VictorSPX lowerShooterMotor = new WPI_VictorSPX(RobotConstants.LOWER_SHOOTER_MOTOR_ID);
 
     private final double speedModifier = 0.8;
 
@@ -20,10 +20,10 @@ public class ShooterSystem {
         }
     }*/
     
-    public void update(boolean Button) {
+    public void getShoot(boolean Button) {
         if (Button) {
             this.upperShooterMotor.set(ControlMode.PercentOutput, speedModifier);
-            //this.lowerShooterMotor.set(ControlMode.PercentOutput, speedModifier);
+            this.lowerShooterMotor.set(ControlMode.PercentOutput, speedModifier);
             /*this.ShooterMotor.set(ControlMode.PercentOutput, motorSpeed);
 
             motorSpeed = speedModifier;
@@ -33,6 +33,16 @@ public class ShooterSystem {
             motorSpeed = 0; */
         }else{
             this.upperShooterMotor.set(ControlMode.PercentOutput, 0);
+            this.lowerShooterMotor.set(ControlMode.PercentOutput, 0);
+        }
+    }
+    public void getRevShoot(boolean Button) {
+        if (Button) {
+            this.upperShooterMotor.set(ControlMode.PercentOutput, -speedModifier);
+            this.lowerShooterMotor.set(ControlMode.PercentOutput, -speedModifier);
+        }else{
+            this.upperShooterMotor.set(ControlMode.PercentOutput, 0);
+            this.lowerShooterMotor.set(ControlMode.PercentOutput, 0);
         }
     }
     

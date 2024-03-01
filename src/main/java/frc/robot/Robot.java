@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 
 import java.util.concurrent.TimeUnit;
 
-import edu.wpi.first.cameraserver.CameraServer;
+//import edu.wpi.first.cameraserver.CameraServer;
 //import edu.wpi.first.wpilibj.Joystick;
 //import com.ctre.phoenix.motorcontrol.ControlMode;
 //import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -31,7 +31,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
-    CameraServer.startAutomaticCapture();
+    //CameraServer.startAutomaticCapture();
   }
   
   // Need to know if this will work
@@ -39,16 +39,45 @@ public class Robot extends TimedRobot {
   
   @Override
   public void autonomousInit() {
-    _DriveSyst.update(0.5, 0.5);
+    // *text* = save for later
+    //Wait a couple of seconds, then shoot preload
+    sleepTimeMilliseconds(2000);
+    _ShootSyst.getShoot(true);
+    sleepTimeMilliseconds(750);
+    _ShootSyst.getShoot(false);
 
+    //Move back, *collect note*
+    sleepTimeMilliseconds(500);
+    //_IntakeSyst.update(true);
+    _DriveSyst.update(-0.3, -0.3);
     sleepTimeMilliseconds(1000);
-
+    _DriveSyst.update(0,0);
+    //_IntakeSyst.update(false);
+    
+    //*Move forward with note*
+    /*_DriveSyst.update(0.3, 0.3);
+    sleepTimeMilliseconds(1000);
     _DriveSyst.update(0, 0);
+    _ShootSyst.getShoot(true);
+    sleepTimeMilliseconds(500);
+    _ShootSyst.getShoot(false);*/
+
+    //Backup
+    /*_DriveSyst.update(-0.5, -0.5);
+
+    sleepTimeMilliseconds(500);
+
+    _DriveSyst.update(0,0);*/
+
+    //Emergency Stop
+    _DriveSyst.update(0,0);
+    _ShootSyst.getShoot(false);
+    _IntakeSyst.update(false);
   }
   
   @Override
   public void autonomousPeriodic() {
-  
+    _DriveSyst.update(0,0);
   }
 
   @Override
@@ -59,7 +88,10 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     _DriveSyst.update(_Ops.LeftDriveStick(), _Ops.RightDriveStick());
     _IntakeSyst.update(_Ops.A_Button());
-    _ShootSyst.update(_Ops.B_Button());
+    _ShootSyst.getShoot(_Ops.B_Button());
+    _ShootSyst.getRevShoot(_Ops.Left_Bumper());
+    //_ShootSyst.getRevShoot(_Ops.Left_Bumper());
+
     //talon_motor.set(ControlMode.PercentOutput, this.pilot_joy.getRawAxis(RobotConstants.RIGHT_STICK));
     
     // https://github.com/whackamadoodle3000/HowToProgramming
