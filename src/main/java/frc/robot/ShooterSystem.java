@@ -17,7 +17,7 @@ public class ShooterSystem {
             this.upperShooterMotor.set(ControlMode.PercentOutput, speedModifier);
             this.lowerShooterMotor.set(ControlMode.PercentOutput, speedModifier);
         }else{
-            if (this.intakeSwitch.get()) {
+            if (!this.intakeSwitch.get()) {
                 this.upperShooterMotor.set(ControlMode.PercentOutput, revButton ? -speedModifier : 0);
                 this.lowerShooterMotor.set(ControlMode.PercentOutput, revButton ? -speedModifier : 0);
             }else{
