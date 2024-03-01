@@ -46,13 +46,13 @@ public class Robot extends TimedRobot {
     sleepTimeMilliseconds(750);
     _ShootSyst.getShoot(false, false);
 
-    //Move back, *collect note*
+    /*//Move back, *collect note*
     sleepTimeMilliseconds(500);
     //_IntakeSyst.update(true);
     _DriveSyst.update(-0.3, -0.3);
     sleepTimeMilliseconds(1000);
     _DriveSyst.update(0,0);
-    //_IntakeSyst.update(false);
+    //_IntakeSyst.update(false);*/
     
     //*Move forward with note*
     /*_DriveSyst.update(0.3, 0.3);
@@ -87,7 +87,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     _DriveSyst.update(_Ops.LeftDriveStick(), _Ops.RightDriveStick());
-    _IntakeSyst.update(_Ops.A_Button());
+    _IntakeSyst.update(_Ops.Right_Bumper());
     _ShootSyst.getShoot(_Ops.B_Button(), _Ops.Left_Bumper());
     //_ShootSyst.getRevShoot(_Ops.Left_Bumper());
 
