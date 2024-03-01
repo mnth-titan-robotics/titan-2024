@@ -20,6 +20,9 @@ public class OperatorInterface {
     public boolean B_Button() {
         return this.pilot_joy.getRawButton(RobotConstants.B_BUTTON);
     }
+    public boolean Y_Button() {
+        return this.pilot_joy.getRawButton(RobotConstants.Y_BUTTON);
+    }
     public boolean Left_Bumper() {
         return this.pilot_joy.getRawButton(RobotConstants.LEFT_BUMPER);
     }

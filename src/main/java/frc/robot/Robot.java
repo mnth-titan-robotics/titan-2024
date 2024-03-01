@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 
 import java.util.concurrent.TimeUnit;
 
-//import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.cameraserver.CameraServer;
 //import edu.wpi.first.wpilibj.Joystick;
 //import com.ctre.phoenix.motorcontrol.ControlMode;
 //import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -31,7 +31,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
-    //CameraServer.startAutomaticCapture();
+    CameraServer.startAutomaticCapture();
   }
   
   // Need to know if this will work
@@ -89,6 +89,7 @@ public class Robot extends TimedRobot {
     _DriveSyst.update(_Ops.LeftDriveStick(), _Ops.RightDriveStick());
     _IntakeSyst.update(_Ops.Right_Bumper());
     _ShootSyst.getShoot(_Ops.B_Button(), _Ops.Left_Bumper());
+    _IntakeSyst.eject(_Ops.Y_Button());
     //_ShootSyst.getRevShoot(_Ops.Left_Bumper());
 
     //talon_motor.set(ControlMode.PercentOutput, this.pilot_joy.getRawAxis(RobotConstants.RIGHT_STICK));

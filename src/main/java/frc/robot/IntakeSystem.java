@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 public class IntakeSystem {
     private WPI_TalonSRX LowerIntakeMotor = new WPI_TalonSRX(RobotConstants.LOWER_INTAKE_MOTOR_ID);
     private WPI_TalonSRX UpperIntakeMotor = new WPI_TalonSRX(RobotConstants.UPPER_INTAKE_MOTOR_ID);
-    private DigitalInput intakeSwitch = new DigitalInput(0);
+    private DigitalInput intakeSwitch = RobotConstants.limitSwitch;
     private final double speed_modifier = 0.5;
 
     public void update(boolean Button) {
@@ -16,7 +16,11 @@ public class IntakeSystem {
             this.UpperIntakeMotor.set(ControlMode.PercentOutput, Button ? this.speed_modifier : 0);
         } else {
             this.LowerIntakeMotor.set(ControlMode.PercentOutput,0);
-            this.UpperIntakeMotor.set(ControlMode.PercentOutput, 0);
+            this.UpperIntakeMotor.set(ControlMode.PercentOutput, Button ? this.speed_modifier : 0);
         }
+    }
+    public void eject(boolean Button) {
+        this.LowerIntakeMotor.set(ControlMode.PercentOutput, Button ? -this.speed_modifier : 0);
+        this.UpperIntakeMotor.set(ControlMode.PercentOutput, Button ? -this.speed_modifier : 0);
     }
 }

@@ -1,6 +1,9 @@
 package frc.robot;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 public final class RobotConstants {
+
+    public static final DigitalInput limitSwitch = new DigitalInput(0);
     //CAN Ports
     public static final int BACK_RIGHT_DRIVE_MOTOR_ID = 10;
     public static final int FRONT_RIGHT_DRIVE_MOTOR_ID = 11;
