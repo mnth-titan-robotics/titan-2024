@@ -3,10 +3,12 @@ package frc.robot;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import edu.wpi.first.wpilibj.DigitalInput;
 
 public class ShooterSystem {
     private WPI_TalonSRX upperShooterMotor = new WPI_TalonSRX(RobotConstants.UPPER_SHOOTER_MOTOR_ID);
     private WPI_VictorSPX lowerShooterMotor = new WPI_VictorSPX(RobotConstants.LOWER_SHOOTER_MOTOR_ID);
+    private DigitalInput intakeSwitch = new DigitalInput(0);
 
     private final double speedModifier = 0.8;
     
@@ -15,9 +17,9 @@ public class ShooterSystem {
             this.upperShooterMotor.set(ControlMode.PercentOutput, speedModifier);
             this.lowerShooterMotor.set(ControlMode.PercentOutput, speedModifier);
         }else{
-            if (revButton) {
-                this.upperShooterMotor.set(ControlMode.PercentOutput, -speedModifier);
-                this.lowerShooterMotor.set(ControlMode.PercentOutput, -speedModifier);
+            if (this.intakeSwitch.get()) {
+                this.upperShooterMotor.set(ControlMode.PercentOutput, revButton ? -speedModifier : 0);
+                this.lowerShooterMotor.set(ControlMode.PercentOutput, revButton ? -speedModifier : 0);
             }else{
                 this.upperShooterMotor.set(ControlMode.PercentOutput, 0);
                 this.lowerShooterMotor.set(ControlMode.PercentOutput, 0);
