@@ -4,39 +4,50 @@
 
 package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
-//import edu.wpi.first.wpilibj.Joystick;
 
+import java.util.concurrent.TimeUnit;
+
+import edu.wpi.first.cameraserver.CameraServer;
+//import edu.wpi.first.wpilibj.Joystick;
 //import com.ctre.phoenix.motorcontrol.ControlMode;
 //import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 
 public class Robot extends TimedRobot {
-  private OperatorInterface _Ops;
-  private DriveSystem _DriveSyst;
-  private ShooterSystem _ShootSyst;
-  private IntakeSystem _IntakeSyst;
+  private OperatorInterface _Ops = new OperatorInterface();
+  private DriveSystem _DriveSyst = new DriveSystem();
+  private ShooterSystem _ShootSyst = new ShooterSystem();
+  private IntakeSystem _IntakeSyst = new IntakeSystem();
+  private void sleepTimeMilliseconds(int Time) {
+    try {
+      TimeUnit.MILLISECONDS.sleep(Time);
+    } catch (InterruptedException e){
+      e.printStackTrace();
+    }
+  }
   //private Joystick pilot_joy = new Joystick(RobotConstants.PILOT_USB_PORT);
   //private WPI_TalonSRX talon_motor = new WPI_TalonSRX(2); // dev # set thru "Phoenix Tuner X"
 
 
   @Override
   public void robotInit() {
-    this._Ops = new OperatorInterface();
-    this._DriveSyst = new DriveSystem();
-    this._ShootSyst = new ShooterSystem();
-    this._IntakeSyst = new IntakeSystem();
+    CameraServer.startAutomaticCapture();
   }
   
   // Need to know if this will work
 
   
   @Override
-    public void autonomousInit() {
+  public void autonomousInit() {
+    _DriveSyst.update(0.5, 0.5);
 
+    sleepTimeMilliseconds(1000);
+
+    _DriveSyst.update(0, 0);
   }
   
   @Override
-    public void autonomousPeriodic() {
+  public void autonomousPeriodic() {
   
   }
 
@@ -48,6 +59,7 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     _DriveSyst.update(_Ops.LeftDriveStick(), _Ops.RightDriveStick());
     _IntakeSyst.update(_Ops.A_Button());
+    _ShootSyst.update(_Ops.B_Button());
     //talon_motor.set(ControlMode.PercentOutput, this.pilot_joy.getRawAxis(RobotConstants.RIGHT_STICK));
     
     // https://github.com/whackamadoodle3000/HowToProgramming
@@ -56,12 +68,12 @@ public class Robot extends TimedRobot {
   }
 
   @Override
-    public void testInit() {
+  public void testInit() {
 
   }
 
   @Override
-    public void testPeriodic() {
+  public void testPeriodic() {
 
   }
 }

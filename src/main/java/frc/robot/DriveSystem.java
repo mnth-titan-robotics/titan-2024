@@ -10,15 +10,14 @@ public class DriveSystem {
     private WPI_TalonSRX FrontRightMotor = new WPI_TalonSRX(RobotConstants.FRONT_RIGHT_DRIVE_MOTOR_ID);
     private WPI_TalonSRX BackRightMotor = new WPI_TalonSRX(RobotConstants.BACK_RIGHT_DRIVE_MOTOR_ID);
 
-
     //Will use encoders later
     /*private Encoder LeftDriveEncoder;
     private Encoder RightDriveEncoder;*/
 
-    public void update(double LeftDriveStick, double RightDriveStick){
-        this.FrontLeftMotor.set(ControlMode.PercentOutput, LeftDriveStick);
-        this.BackLeftMotor.set(ControlMode.PercentOutput, LeftDriveStick);
-        this.FrontRightMotor.set(ControlMode.PercentOutput, RightDriveStick);
-        this.BackRightMotor.set(ControlMode.PercentOutput, RightDriveStick);
+    public void update(double LeftDrive, double RightDrive){
+        this.FrontLeftMotor.set(ControlMode.PercentOutput, LeftDrive);
+        this.BackLeftMotor.set(ControlMode.PercentOutput, LeftDrive);
+        this.FrontRightMotor.set(ControlMode.PercentOutput, RightDrive);
+        this.BackRightMotor.set(ControlMode.PercentOutput, RightDrive);
     }
 }
