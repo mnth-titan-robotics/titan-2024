@@ -42,9 +42,9 @@ public class Robot extends TimedRobot {
     // *text* = save for later
     //Wait a couple of seconds, then shoot preload
     sleepTimeMilliseconds(2000);
-    _ShootSyst.getShoot(true);
+    _ShootSyst.getShoot(true, false);
     sleepTimeMilliseconds(750);
-    _ShootSyst.getShoot(false);
+    _ShootSyst.getShoot(false, false);
 
     //Move back, *collect note*
     sleepTimeMilliseconds(500);
@@ -71,7 +71,7 @@ public class Robot extends TimedRobot {
 
     //Emergency Stop
     _DriveSyst.update(0,0);
-    _ShootSyst.getShoot(false);
+    _ShootSyst.getShoot(false, false);
     _IntakeSyst.update(false);
   }
   
@@ -88,8 +88,7 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     _DriveSyst.update(_Ops.LeftDriveStick(), _Ops.RightDriveStick());
     _IntakeSyst.update(_Ops.A_Button());
-    _ShootSyst.getShoot(_Ops.B_Button());
-    _ShootSyst.getRevShoot(_Ops.Left_Bumper());
+    _ShootSyst.getShoot(_Ops.B_Button(), _Ops.Left_Bumper());
     //_ShootSyst.getRevShoot(_Ops.Left_Bumper());
 
     //talon_motor.set(ControlMode.PercentOutput, this.pilot_joy.getRawAxis(RobotConstants.RIGHT_STICK));
