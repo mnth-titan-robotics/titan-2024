@@ -6,7 +6,7 @@ public final class RobotConstants {
     public static final int FRONT_RIGHT_DRIVE_MOTOR_ID = 11;
     public static final int BACK_LEFT_DRIVE_MOTOR_ID = 12;
     public static final int FRONT_LEFT_DRIVE_MOTOR_ID = 13;
-    public static final int LOWER_SHOOTER_MOTOR_ID = 14;
+    //public static final int LOWER_SHOOTER_MOTOR_ID = 14;
     public static final int UPPER_SHOOTER_MOTOR_ID = 15;
     public static final int UPPER_INTAKE_MOTOR_ID = 16;
     public static final int LOWER_INTAKE_MOTOR_ID = 17;
