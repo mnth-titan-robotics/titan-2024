@@ -58,10 +58,10 @@ public class Robot extends TimedRobot {
     _DriveSyst.update(0,0);
     sleepTimeMilliseconds(2000);
     _IntakeSyst.update(false);
-    _DriveSyst.update(0.7, 0.7);
+    _DriveSyst.update(-0.7, -0.7);
     sleepTimeMilliseconds(1400);
     _DriveSyst.update(0,0);
-    
+
     _ShootSyst.getShoot(true, false);
     sleepTimeMilliseconds(750);
     _IntakeSyst.update(true);
