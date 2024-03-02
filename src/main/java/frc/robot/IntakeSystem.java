@@ -11,7 +11,9 @@ public class IntakeSystem {
     private final double upper_speed_modifier = 0.7;
 
     public void update(boolean Button, boolean revButton) {
-
+        if (!this.intakeSwitch.get()) {
+            System.out.println("*******NOTE NOT LOADED");
+        }
         if (revButton) {
         this.LowerIntakeMotor.set(ControlMode.PercentOutput, -this.lower_speed_modifier);
         this.UpperIntakeMotor.set(ControlMode.PercentOutput, -this.upper_speed_modifier);
@@ -23,6 +25,7 @@ public class IntakeSystem {
         else {
             this.LowerIntakeMotor.set(ControlMode.PercentOutput,0);
             this.UpperIntakeMotor.set(ControlMode.PercentOutput, Button ? this.lower_speed_modifier : 0);
+            System.out.println("NOTE LOADED");
         }
     }
     /*public void eject(boolean Button) {

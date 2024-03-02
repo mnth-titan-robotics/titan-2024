@@ -6,7 +6,7 @@ public class OperatorInterface {
     private Joystick pilot_joy = new Joystick(RobotConstants.PILOT_USB_PORT);
     // private Joystick copilot_joy = new Joystick(RobotConstants.COPILOT_USB_PORT);
 
-    private final double speed_modifier = 0.5;
+    private final double speed_modifier = 0.65;
 
     public double LeftDriveStick() {
         return this.pilot_joy.getRawAxis(RobotConstants.LEFT_STICK) * this.speed_modifier;
@@ -22,6 +22,9 @@ public class OperatorInterface {
     }
     public boolean Y_Button() {
         return this.pilot_joy.getRawButton(RobotConstants.Y_BUTTON);
+    }
+    public boolean X_BUTTON() {
+        return this.pilot_joy.getRawButton(RobotConstants.X_BUTTON);
     }
     public boolean Left_Bumper() {
         return this.pilot_joy.getRawButton(RobotConstants.LEFT_BUMPER);
