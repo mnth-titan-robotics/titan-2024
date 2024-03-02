@@ -41,19 +41,34 @@ public class Robot extends TimedRobot {
   public void autonomousInit() {
     // *text* = save for later
     //Wait a couple of seconds, then shoot preload
-    sleepTimeMilliseconds(2000);
+    sleepTimeMilliseconds(1000);
     _ShootSyst.getShoot(true, false);
+    sleepTimeMilliseconds(750);
     _IntakeSyst.update(true);
     sleepTimeMilliseconds(3000);
     _ShootSyst.getShoot(false, false);
     _IntakeSyst.update(false);
 
     //Move back, *collect note*
+    _IntakeSyst.update(true);
     sleepTimeMilliseconds(500);
     //_IntakeSyst.update(true);
-    _DriveSyst.update(0.5, 0.5);
+    _DriveSyst.update(0.7, 0.7);
     sleepTimeMilliseconds(1000);
     _DriveSyst.update(0,0);
+    sleepTimeMilliseconds(2000);
+    _IntakeSyst.update(false);
+    _DriveSyst.update(0.7, 0.7);
+    sleepTimeMilliseconds(1400);
+    _DriveSyst.update(0,0);
+    
+    _ShootSyst.getShoot(true, false);
+    sleepTimeMilliseconds(750);
+    _IntakeSyst.update(true);
+    sleepTimeMilliseconds(3000);
+    _ShootSyst.getShoot(false, false);
+    _IntakeSyst.update(false);
+
     //_IntakeSyst.update(false);
     
     //*Move forward with note*
