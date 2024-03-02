@@ -44,30 +44,30 @@ public class Robot extends TimedRobot {
     sleepTimeMilliseconds(1000);
     _ShootSyst.getShoot(true, false);
     sleepTimeMilliseconds(750);
-    _IntakeSyst.update(true);
+    _IntakeSyst.update(true, false);
     sleepTimeMilliseconds(3000);
     _ShootSyst.getShoot(false, false);
-    _IntakeSyst.update(false);
+    _IntakeSyst.update(false, false);
 
     //Move back, *collect note*
-    _IntakeSyst.update(true);
+    _IntakeSyst.update(true, false);
     sleepTimeMilliseconds(500);
     //_IntakeSyst.update(true);
     _DriveSyst.update(0.7, 0.7);
     sleepTimeMilliseconds(1000);
     _DriveSyst.update(0,0);
     sleepTimeMilliseconds(2000);
-    _IntakeSyst.update(false);
+    _IntakeSyst.update(false, false);
     _DriveSyst.update(-0.7, -0.7);
     sleepTimeMilliseconds(1400);
     _DriveSyst.update(0,0);
 
     _ShootSyst.getShoot(true, false);
     sleepTimeMilliseconds(750);
-    _IntakeSyst.update(true);
+    _IntakeSyst.update(true, false);
     sleepTimeMilliseconds(3000);
     _ShootSyst.getShoot(false, false);
-    _IntakeSyst.update(false);
+    _IntakeSyst.update(false, false);
 
     //_IntakeSyst.update(false);
     
@@ -89,7 +89,7 @@ public class Robot extends TimedRobot {
     //Emergency Stop
     _DriveSyst.update(0,0);
     _ShootSyst.getShoot(false, false);
-    _IntakeSyst.update(false);
+    _IntakeSyst.update(false, false);
   }
   
   @Override
@@ -104,7 +104,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     _DriveSyst.update(_Ops.LeftDriveStick(), _Ops.RightDriveStick());
-    _IntakeSyst.update(_Ops.Right_Bumper());
+    _IntakeSyst.update(_Ops.Right_Bumper(), _Ops.Y_Button());
     _ShootSyst.getShoot(_Ops.B_Button(), _Ops.Left_Bumper());
     //_IntakeSyst.eject(_Ops.Y_Button());
     //_ShootSyst.getRevShoot(_Ops.Left_Bumper());
