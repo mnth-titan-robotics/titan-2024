@@ -7,8 +7,8 @@ public class IntakeSystem {
     private WPI_TalonSRX LowerIntakeMotor = new WPI_TalonSRX(RobotConstants.LOWER_INTAKE_MOTOR_ID);
     private WPI_TalonSRX UpperIntakeMotor = new WPI_TalonSRX(RobotConstants.UPPER_INTAKE_MOTOR_ID);
     private DigitalInput intakeSwitch = RobotConstants.limitSwitch;
-    private final double lower_speed_modifier = 0.5;
-    private final double upper_speed_modifier = 0.7;
+    private final double lower_speed_modifier = 0.7;
+    private final double upper_speed_modifier = 1;
 
     public void update(boolean Button, boolean revButton) {
         if (!this.intakeSwitch.get()) {
