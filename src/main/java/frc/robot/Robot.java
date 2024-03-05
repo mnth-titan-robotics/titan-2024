@@ -42,11 +42,11 @@ public class Robot extends TimedRobot {
     // *text* = save for later
     //Wait a couple of seconds, then shoot preload
     sleepTimeMilliseconds(1000);
-    _ShootSyst.getShoot(true, false);
+    _ShootSyst.getShoot(true, false, false);
     sleepTimeMilliseconds(750);
     _IntakeSyst.update(true, false);
     sleepTimeMilliseconds(3000);
-    _ShootSyst.getShoot(false, false);
+    _ShootSyst.getShoot(false, false, false);
     _IntakeSyst.update(false, false);
 
     //Move back, *collect note*
@@ -64,11 +64,11 @@ public class Robot extends TimedRobot {
     sleepTimeMilliseconds(400);
     _DriveSyst.update(0,0);
 
-    _ShootSyst.getShoot(true, false);
+    _ShootSyst.getShoot(true, false, false);
     sleepTimeMilliseconds(750);
     _IntakeSyst.update(true, false);
     sleepTimeMilliseconds(3000);
-    _ShootSyst.getShoot(false, false);
+    _ShootSyst.getShoot(false, false, false);
     _IntakeSyst.update(false, false);
 
     //_IntakeSyst.update(false);
@@ -90,7 +90,7 @@ public class Robot extends TimedRobot {
 
     //Emergency Stop
     _DriveSyst.update(0,0);
-    _ShootSyst.getShoot(false, false);
+    _ShootSyst.getShoot(false, false, false);
     _IntakeSyst.update(false, false);
   }
   
@@ -107,7 +107,7 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     _DriveSyst.update(_Ops.LeftDriveStick(), _Ops.RightDriveStick());
     _IntakeSyst.update(_Ops.Right_Bumper(), _Ops.Y_Button());
-    _ShootSyst.getShoot(_Ops.B_Button(), _Ops.Left_Bumper());
+    _ShootSyst.getShoot(_Ops.B_Button(), _Ops.Left_Bumper(), _Ops.X_BUTTON());
     //_IntakeSyst.eject(_Ops.Y_Button());
     //_ShootSyst.getRevShoot(_Ops.Left_Bumper());
 
