@@ -15,12 +15,12 @@ public class IntakeSystem {
             System.out.println("*******NOTE NOT LOADED");
         }
         if (revButton) {
-        this.LowerIntakeMotor.set(ControlMode.PercentOutput, -this.lower_speed_modifier);
-        this.UpperIntakeMotor.set(ControlMode.PercentOutput, -this.upper_speed_modifier);
+            this.LowerIntakeMotor.set(ControlMode.PercentOutput, -this.lower_speed_modifier);
+            this.UpperIntakeMotor.set(ControlMode.PercentOutput, -this.upper_speed_modifier);
         }
-        else if (!this.intakeSwitch.get()) {
-            this.LowerIntakeMotor.set(ControlMode.PercentOutput, Button ? this.lower_speed_modifier : 0);
-            this.UpperIntakeMotor.set(ControlMode.PercentOutput, Button ? this.upper_speed_modifier : 0);
+        else if (!this.intakeSwitch.get() && Button) {
+            this.LowerIntakeMotor.set(ControlMode.PercentOutput, this.lower_speed_modifier);
+            this.UpperIntakeMotor.set(ControlMode.PercentOutput, this.upper_speed_modifier);
         } 
         else {
             this.LowerIntakeMotor.set(ControlMode.PercentOutput,0);

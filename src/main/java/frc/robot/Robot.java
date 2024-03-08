@@ -5,8 +5,6 @@
 package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 
-import java.util.concurrent.TimeUnit;
-
 import edu.wpi.first.cameraserver.CameraServer;
 //import edu.wpi.first.wpilibj.Joystick;
 //import com.ctre.phoenix.motorcontrol.ControlMode;
@@ -18,13 +16,7 @@ public class Robot extends TimedRobot {
   private DriveSystem _DriveSyst = new DriveSystem();
   private ShooterSystem _ShootSyst = new ShooterSystem();
   private IntakeSystem _IntakeSyst = new IntakeSystem();
-  private void sleepTimeMilliseconds(int Time) {
-    try {
-      TimeUnit.MILLISECONDS.sleep(Time);
-    } catch (InterruptedException e){
-      e.printStackTrace();
-    }
-  }
+  private AutoCommands _AutoComm = new AutoCommands();
   //private Joystick pilot_joy = new Joystick(RobotConstants.PILOT_USB_PORT);
   //private WPI_TalonSRX talon_motor = new WPI_TalonSRX(2); // dev # set thru "Phoenix Tuner X"
 
@@ -39,54 +31,12 @@ public class Robot extends TimedRobot {
   
   @Override
   public void autonomousInit() {
-    // *text* = save for later
-    //Wait a couple of seconds, then shoot preload
-    sleepTimeMilliseconds(1000);
-    _ShootSyst.getShoot(true, false, false);
-    sleepTimeMilliseconds(750);
-    _IntakeSyst.update(true, false);
-    sleepTimeMilliseconds(3000);
-    _ShootSyst.getShoot(false, false, false);
-    _IntakeSyst.update(false, false);
+    //Waits 
+    _AutoComm.shootPreload();
 
-    //Move back, *collect note*
-    _IntakeSyst.update(true, false);
-    sleepTimeMilliseconds(500);
-    //_IntakeSyst.update(true);
-    _DriveSyst.update(0.7, 0.7);
-    sleepTimeMilliseconds(1000);
-    _DriveSyst.update(0,0);
-    sleepTimeMilliseconds(2000);
-    _IntakeSyst.update(false, false);
-    _DriveSyst.update(-0.7, -0.7);
-    sleepTimeMilliseconds(1000);
-    _DriveSyst.update(-0.3, -0.3);
-    sleepTimeMilliseconds(400);
-    _DriveSyst.update(0,0);
+    _AutoComm.collectNote();
 
-    _ShootSyst.getShoot(true, false, false);
-    sleepTimeMilliseconds(750);
-    _IntakeSyst.update(true, false);
-    sleepTimeMilliseconds(3000);
-    _ShootSyst.getShoot(false, false, false);
-    _IntakeSyst.update(false, false);
-
-    //_IntakeSyst.update(false);
-    
-    //*Move forward with note*
-    /*_DriveSyst.update(0.3, 0.3);
-    sleepTimeMilliseconds(1000);
-    _DriveSyst.update(0, 0);
-    _ShootSyst.getShoot(true);
-    sleepTimeMilliseconds(500);
-    _ShootSyst.getShoot(false);*/
-
-    //Backup
-    /*_DriveSyst.update(-0.5, -0.5);
-
-    sleepTimeMilliseconds(500);
-
-    _DriveSyst.update(0,0);*/
+    _AutoComm.shootCollectNote();
 
     //Emergency Stop
     _DriveSyst.update(0,0);
