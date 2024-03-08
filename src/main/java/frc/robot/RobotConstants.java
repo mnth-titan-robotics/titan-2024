@@ -5,11 +5,13 @@ public final class RobotConstants {
 
     public static final DigitalInput limitSwitch = new DigitalInput(0);
     //CAN Ports
+    //Drive ones plus Lower shooter Tomato are Victor
     public static final int BACK_RIGHT_DRIVE_MOTOR_ID = 10;
     public static final int FRONT_RIGHT_DRIVE_MOTOR_ID = 11;
     public static final int BACK_LEFT_DRIVE_MOTOR_ID = 12;
     public static final int FRONT_LEFT_DRIVE_MOTOR_ID = 13;
     public static final int LOWER_SHOOTER_MOTOR_ID = 14;
+    //3 of these are running Talons
     public static final int UPPER_SHOOTER_MOTOR_ID = 15;
     public static final int UPPER_INTAKE_MOTOR_ID = 16;
     public static final int LOWER_INTAKE_MOTOR_ID = 17;

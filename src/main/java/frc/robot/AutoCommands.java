@@ -21,7 +21,7 @@ public class AutoCommands {
         Robot._IntakeSyst.update(true, false);
         sleepTimeMilliseconds(3000);
         Robot._ShootSyst.getShoot(false, false, false);
-        Robot._IntakeSyst.update(false, false);   
+        Robot._IntakeSyst.update(false, false);
     }
 
     public void collectNote() {
@@ -45,5 +45,10 @@ public class AutoCommands {
         sleepTimeMilliseconds(3000);
         Robot._ShootSyst.getShoot(false, false, false);
         Robot._IntakeSyst.update(false, false);
+    }
+    public void taxi() {
+        Robot._DriveSyst.update(0.4, 0.4);
+        sleepTimeMilliseconds(1500);
+        Robot._DriveSyst.update(0,0);
     }
 }

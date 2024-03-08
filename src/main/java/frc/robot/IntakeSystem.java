@@ -17,12 +17,14 @@ public class IntakeSystem {
         if (revButton) {
             this.LowerIntakeMotor.set(ControlMode.PercentOutput, -this.lower_speed_modifier);
             this.UpperIntakeMotor.set(ControlMode.PercentOutput, -this.upper_speed_modifier);
+            System.out.println("revButton TRUE");
         }
         else if (!this.intakeSwitch.get() && Button) {
             this.LowerIntakeMotor.set(ControlMode.PercentOutput, this.lower_speed_modifier);
             this.UpperIntakeMotor.set(ControlMode.PercentOutput, this.upper_speed_modifier);
+            System.out.println("not intakeswitch && button");
         } 
-        else {
+        else if (intakeSwitch.get()) {
             this.LowerIntakeMotor.set(ControlMode.PercentOutput,0);
             this.UpperIntakeMotor.set(ControlMode.PercentOutput, Button ? this.lower_speed_modifier : 0);
             System.out.println("NOTE LOADED");

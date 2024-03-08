@@ -32,12 +32,14 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     //Waits 
-    _AutoComm.shootPreload();
+    /*_AutoComm.shootPreload();
 
     _AutoComm.collectNote();
 
-    _AutoComm.shootCollectNote();
+    _AutoComm.shootCollectNote();*/
 
+    _AutoComm.taxi();
+    
     //Emergency Stop
     _DriveSyst.update(0,0);
     _ShootSyst.getShoot(false, false, false);
@@ -56,8 +58,8 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     _DriveSyst.update(_Ops.LeftDriveStick(), _Ops.RightDriveStick());
-    _IntakeSyst.update(_Ops.Right_Bumper(), _Ops.Y_Button());
-    _ShootSyst.getShoot(_Ops.B_Button(), _Ops.Left_Bumper(), _Ops.X_BUTTON());
+    _IntakeSyst.update(_Ops.Left_Bumper(), _Ops.Y_Button());
+    _ShootSyst.getShoot(_Ops.B_Button(), _Ops.A_Button(), _Ops.X_BUTTON());
     //_IntakeSyst.eject(_Ops.Y_Button());
     //_ShootSyst.getRevShoot(_Ops.Left_Bumper());
 

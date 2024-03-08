@@ -11,7 +11,7 @@ public class ShooterSystem {
     private DigitalInput intakeSwitch = RobotConstants.limitSwitch;
 
     private final double revSpeedModifier = -0.8;
-    private final double ampSpeedModifier = 0.3;
+    //private final double ampSpeedModifier = 0.3;
 
     public void getShoot(boolean Button, boolean revButton, boolean ampShoot) {
         double speed = 0;
@@ -20,7 +20,7 @@ public class ShooterSystem {
         } else if (!this.intakeSwitch.get() && revButton) {
             speed = revSpeedModifier;
         } else if (ampShoot) {
-            speed = ampSpeedModifier;
+            speed = 1;
         } else {
             speed = 0;
         }
