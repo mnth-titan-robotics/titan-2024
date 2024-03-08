@@ -48,7 +48,7 @@ public class AutoCommands {
     }
     public void taxi() {
         Robot._DriveSyst.update(0.4, 0.4);
-        sleepTimeMilliseconds(1500);
+        sleepTimeMilliseconds(2000);
         Robot._DriveSyst.update(0,0);
     }
 }

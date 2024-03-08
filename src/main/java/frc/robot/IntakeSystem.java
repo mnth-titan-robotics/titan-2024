@@ -24,8 +24,8 @@ public class IntakeSystem {
             this.UpperIntakeMotor.set(ControlMode.PercentOutput, this.upper_speed_modifier);
             System.out.println("not intakeswitch && button");
         } 
-        else if (intakeSwitch.get()) {
-            this.LowerIntakeMotor.set(ControlMode.PercentOutput,0);
+        else {
+            this.LowerIntakeMotor.set(ControlMode.PercentOutput, Button ? this.lower_speed_modifier : 0);
             this.UpperIntakeMotor.set(ControlMode.PercentOutput, Button ? this.lower_speed_modifier : 0);
             System.out.println("NOTE LOADED");
         }
