@@ -12,11 +12,11 @@ import edu.wpi.first.cameraserver.CameraServer;
 
 
 public class Robot extends TimedRobot {
-  private OperatorInterface _Ops = new OperatorInterface();
-  private DriveSystem _DriveSyst = new DriveSystem();
-  private ShooterSystem _ShootSyst = new ShooterSystem();
-  private IntakeSystem _IntakeSyst = new IntakeSystem();
-  private AutoCommands _AutoComm = new AutoCommands();
+  public OperatorInterface _Ops = new OperatorInterface();
+  public static DriveSystem _DriveSyst = new DriveSystem();
+  public static ShooterSystem _ShootSyst = new ShooterSystem();
+  public static IntakeSystem _IntakeSyst = new IntakeSystem();
+  public AutoCommands _AutoComm = new AutoCommands();
   //private Joystick pilot_joy = new Joystick(RobotConstants.PILOT_USB_PORT);
   //private WPI_TalonSRX talon_motor = new WPI_TalonSRX(2); // dev # set thru "Phoenix Tuner X"
 
